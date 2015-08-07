@@ -27,10 +27,6 @@ Browse to `http://localhost:8000/app/index.html`.
 
 ### Running Unit Tests
 
-The angular-seed app comes preconfigured with unit tests. These are written in
-[Jasmine][jasmine], which we run with the [Karma Test Runner][karma]. We provide a Karma
-configuration file to run them.
-
 * the configuration is found at `karma.conf.js`
 * the unit tests are found next to the code they are testing and are named as `...-test.js`.
 
