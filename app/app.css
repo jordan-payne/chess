@@ -28,3 +28,23 @@
   content: "";
   padding: 0;
 }
+
+.board > .row:nth-child(odd) > .column:nth-child(even) {
+  background-color: rgba(80, 38, 15, 0.2);
+}
+
+.board > .row:nth-child(even) > .column:nth-child(odd) {
+  background-color: rgba(80, 38, 15, 0.2);
+}
+
+.row {
+  clear: left;
+}
+
+.column {
+  float: left;
+  max-width: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+}
