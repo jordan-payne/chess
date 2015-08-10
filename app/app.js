@@ -8,6 +8,7 @@ angular.module('chessApp', [
   'chessApp.about',
   'chessApp.version'
 ]).
-config(['$routeProvider', function($routeProvider) {
+config(['$routeProvider', '$provide', function($routeProvider, $provide) {
   $routeProvider.otherwise({redirectTo: '/view-chess-board'});
+  $provide.constant('BASE_IMG_SRC', 'img/');
 }]);
