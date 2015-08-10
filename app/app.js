@@ -10,5 +10,4 @@ angular.module('chessApp', [
 ]).
 config(['$routeProvider', '$provide', function($routeProvider, $provide) {
   $routeProvider.otherwise({redirectTo: '/view-chess-board'});
-  $provide.constant('BASE_IMG_SRC', 'img/');
 }]);

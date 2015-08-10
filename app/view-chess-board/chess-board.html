@@ -1,88 +1,66 @@
-{{chessboard.white_pawn}}
-<div class="board">
-  <div class="row">
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wr.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wk.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wb.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wq.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wk.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wb.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wk.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/wr.svg" type="image/svg+xml"></object></div>
-  </div>
-  <div class="row">
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-      <div class="column"><img ng-src="{{chessboard.white_pawn.src}}" width="90%" height="90%"></img></div>
-  </div>
-  <div class="row">
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-
-  </div>
-  <div class="row">
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-
-  </div>
-  <div class="row">
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-
-  </div>
-  <div class="row">
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column"></div>
-
-  </div>
-  <div class="row">
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bp.svg" type="image/svg+xml"></object></div>
-
-  </div>
-  <div class="row">
-      <div class="column"><object width="90%" height="90%" data="img/pieces/br.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bk.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bb.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bq.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bk.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bb.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/bk.svg" type="image/svg+xml"></object></div>
-      <div class="column"><object width="90%" height="90%" data="img/pieces/br.svg" type="image/svg+xml"></object></div>
-  </div>
+<div id="chess">
+  <div><span ng-bind-html="chessboard.white_rook.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_knight.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_bishop.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_queen.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_king.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_bishop.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_knight.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_rook.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.white_pawn.unicode"></span></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_pawn.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_rook.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_knight.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_bishop.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_queen.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_king.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_bishop.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_knight.unicode"></span></div>
+  <div><span ng-bind-html="chessboard.black_rook.unicode"></span></div>
 </div>
