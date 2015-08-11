@@ -68,7 +68,12 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
       $templateElement.replaceWith(this.template);
 
       return function LinkingFunction($scope, $element, $attrs) {
-
+        $element.on('mouseenter', function() {
+          $element.css('-webkit-box-shadow', 'inset 0 0 15px #000000');
+        });
+        $element.on('mouseleave', function() {
+          $element.css('-webkit-box-shadow', '');
+        });
       };
     }
   };
