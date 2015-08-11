@@ -55,4 +55,21 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
       return { 'type': type[0], 'player': player, 'unicode': unicode }
     }
   }
+}])
+
+.directive('chessSquare', ['$compile', function($compile) {
+  return {
+    restrict: 'E',
+    scope: {
+      piece: '='
+    },
+    template: '<div><span ng-bind-html="piece.unicode"></span></div>',
+    compile: function CompilingFunction($templateElement, $templateAttributes) {
+      $templateElement.replaceWith(this.template);
+
+      return function LinkingFunction($scope, $element, $attrs) {
+
+      };
+    }
+  };
 }]);
