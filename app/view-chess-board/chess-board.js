@@ -23,6 +23,8 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
 
 .controller('ChessBoardCtrl', ['pieceFactory', 'PIECES', 'PLAYERS', function(pieceFactory, PIECES, PLAYERS) {
 
+
+
   //TODO: This is just terrible, figure out better way of constructing board, brute force for now.
   this.white_pawn_one = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
   this.white_pawn_two = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
@@ -60,6 +62,8 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
   this.black_queen = pieceFactory.fn(PIECES.QUEEN, PLAYERS.BLACK)
   this.black_king = pieceFactory.fn(PIECES.KING, PLAYERS.BLACK)
 
+  this.selected_piece = null;
+
 }])
 
 .factory('pieceFactory', ['PLAYERS', 'PIECES', function(PLAYERS, PIECES) {
@@ -80,11 +84,12 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
   }
 }])
 
-.directive('chessSquare', ['$compile', 'pieceFactory', 'PIECES', 'PLAYERS', function($compile, pieceFactory, PIECES, PLAYERS) {
+.directive('chessSquare', ['$compile', 'pieceFactory', 'PIECES', 'PLAYERS', '$rootScope', function($compile, pieceFactory, PIECES, PLAYERS, $rootScope) {
   return {
     restrict: 'E',
     scope: {
-      piece: '='
+      piece: '=',
+      selectedPiece: '='
     },
     template: '<div><span ng-bind-html="piece.unicode"></span></div>',
     compile: function CompilingFunction($templateElement, $templateAttributes) {
@@ -92,8 +97,8 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
 
       return function LinkingFunction($scope, $element, $attrs) {
         $element.on('click', function() {
+          $scope.selectedPiece = $scope.piece;
           $scope.$apply(function() {
-            console.log($scope.piece);
             $compile($element)($scope);
           })
         });
