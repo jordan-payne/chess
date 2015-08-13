@@ -1,4 +1,24 @@
-<div id="chess">
+<div id="horizontal-grid">
+  <div><span>A</span></div>
+  <div><span>B</span></div>
+  <div><span>C</span></div>
+  <div><span>D</span></div>
+  <div><span>E</span></div>
+  <div><span>F</span></div>
+  <div><span>G</span></div>
+  <div><span>H</span></div>
+</div>
+<div id="vertical-grid" style="float:left">
+  <div>8</div>
+  <div>7</div>
+  <div>6</div>
+  <div>5</div>
+  <div>4</div>
+  <div>3</div>
+  <div>2</div>
+  <div>1</div>
+</div>
+<div id="chess" style="float: left">
   <chess-square id="a8" move="move" unicode="{{pieces[board[00]]}}" selected-piece="selected_piece"></chess-square>
   <chess-square id="b8" move="move" unicode="{{pieces[board[01]]}}" selected-piece="selected_piece"></chess-square>
   <chess-square id="c8" move="move" unicode="{{pieces[board[02]]}}" selected-piece="selected_piece"></chess-square>
@@ -63,4 +83,30 @@
   <chess-square id="f1" move="move" unicode="{{pieces[board[61]]}}" selected-piece="selected_piece"></chess-square>
   <chess-square id="g1" move="move" unicode="{{pieces[board[62]]}}" selected-piece="selected_piece"></chess-square>
   <chess-square id="h1" move="move" unicode="{{pieces[board[63]]}}" selected-piece="selected_piece"></chess-square>
+</div>
+<div id="vertical-grid" style="float:left">
+  <div>8</div>
+  <div>7</div>
+  <div>6</div>
+  <div>5</div>
+  <div>4</div>
+  <div>3</div>
+  <div>2</div>
+  <div>1</div>
+</div>
+<div style="float: left">
+  Moves:
+  <ul>
+    <li ng-repeat="move in moves">{{move.from}}{{move.to}}</li>
+  </ul>
+</div>
+<div id="horizontal-grid">
+  <div><span>A</span></div>
+  <div><span>B</span></div>
+  <div><span>C</span></div>
+  <div><span>D</span></div>
+  <div><span>E</span></div>
+  <div><span>F</span></div>
+  <div><span>G</span></div>
+  <div><span>H</span></div>
 </div>

@@ -24,10 +24,10 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
   $provide.value('STARTING_BOARD', [
     'WR', 'WN', 'WB', 'WQ', 'WK', 'WB', 'WN', 'WR',
     'WP', 'WP', 'WP', 'WP', 'WP', 'WP', 'WP', 'WP',
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
+    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
+    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
+    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
+    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
     'BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP',
     'BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'
   ])
@@ -38,9 +38,9 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
 
   $scope.pieces = PIECES;
   $scope.board = STARTING_BOARD;
-  console.log(STARTING_BOARD);
   $scope.selected_piece = null;
   $scope.move = null;
+  $scope.moves = [];
 
 }])
 
@@ -65,6 +65,7 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
             $scope.unicode = null;
             $element.css('-webkit-box-shadow', '');
             $element.css('-box-shadow', '');
+            $scope.$parent.moves.push($scope.move);
             $scope.move = null;
           }
 
