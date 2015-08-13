@@ -1,67 +1,66 @@
-<div ng-if="chessboard.selected_piece">You have selected a {{chessboard.selected_piece.player}} {{chessboard.selected_piece.type}}</div>
 <div id="chess">
-  <chess-square piece="chessboard.white_rook_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_knight_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_bishop_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_queen" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_king" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_bishop_two" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_knight_two" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_rook_two" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_two" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_three" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_four" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_five" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_six" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_seven" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.white_pawn_eight" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square></chess-square>
-  <chess-square piece="chessboard.black_pawn_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_pawn_two" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_pawn_three" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_pawn_four" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_pawn_five" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_pawn_six" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_pawn_seven" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_pawn_eight" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_rook_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_knight_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_bishop_one" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_queen" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_king" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_bishop_two" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_knight_two" selected-piece="chessboard.selected_piece"></chess-square>
-  <chess-square piece="chessboard.black_rook_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square ng-attr-id="a8" move="chessboard.move" piece="chessboard.white_rook_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b8" move="chessboard.move" piece="chessboard.white_knight_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c8" move="chessboard.move" piece="chessboard.white_bishop_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d8" move="chessboard.move" piece="chessboard.white_queen" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e8" move="chessboard.move" piece="chessboard.white_king" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f8" move="chessboard.move" piece="chessboard.white_bishop_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g8" move="chessboard.move" piece="chessboard.white_knight_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h8" move="chessboard.move" piece="chessboard.white_rook_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="a7" move="chessboard.move" piece="chessboard.white_pawn_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b7" move="chessboard.move" piece="chessboard.white_pawn_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c7" move="chessboard.move" piece="chessboard.white_pawn_three" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d7" move="chessboard.move" piece="chessboard.white_pawn_four" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e7" move="chessboard.move" piece="chessboard.white_pawn_five" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f7" move="chessboard.move" piece="chessboard.white_pawn_six" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g7" move="chessboard.move" piece="chessboard.white_pawn_seven" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h7" move="chessboard.move" piece="chessboard.white_pawn_eight" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="a6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h6" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="a5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h5" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="a4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h4" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="a3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h3" move="chessboard.move" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="a2" move="chessboard.move" piece="chessboard.black_pawn_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b2" move="chessboard.move" piece="chessboard.black_pawn_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c2" move="chessboard.move" piece="chessboard.black_pawn_three" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d2" move="chessboard.move" piece="chessboard.black_pawn_four" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e2" move="chessboard.move" piece="chessboard.black_pawn_five" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f2" move="chessboard.move" piece="chessboard.black_pawn_six" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g2" move="chessboard.move" piece="chessboard.black_pawn_seven" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h2" move="chessboard.move" piece="chessboard.black_pawn_eight" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="a1" move="chessboard.move" piece="chessboard.black_rook_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="b1" move="chessboard.move" piece="chessboard.black_knight_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="c1" move="chessboard.move" piece="chessboard.black_bishop_one" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="d1" move="chessboard.move" piece="chessboard.black_queen" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="e1" move="chessboard.move" piece="chessboard.black_king" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="f1" move="chessboard.move" piece="chessboard.black_bishop_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="g1" move="chessboard.move" piece="chessboard.black_knight_two" selected-piece="chessboard.selected_piece"></chess-square>
+  <chess-square id="h1" move="chessboard.move" piece="chessboard.black_rook_two" selected-piece="chessboard.selected_piece"></chess-square>
 </div>

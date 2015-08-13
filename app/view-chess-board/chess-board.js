@@ -63,6 +63,7 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
   this.black_king = pieceFactory.fn(PIECES.KING, PLAYERS.BLACK)
 
   this.selected_piece = null;
+  this.move = null;
 
 }])
 
@@ -88,16 +89,34 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
   return {
     restrict: 'E',
     scope: {
+      id: '@',
       piece: '=',
-      selectedPiece: '='
+      selectedPiece: '=',
+      move: '='
     },
     template: '<div><span ng-bind-html="piece.unicode"></span></div>',
     compile: function CompilingFunction($templateElement, $templateAttributes) {
       $templateElement.replaceWith(this.template);
 
       return function LinkingFunction($scope, $element, $attrs) {
+
+        $scope.$on('movePiece', function(event, args) {
+          if (args.move.from == $scope.id) {
+            $scope.piece = null;
+          }
+
+        });
+
         $element.on('click', function() {
-          $scope.selectedPiece = $scope.piece;
+          if ($scope.selectedPiece) {
+            $scope.piece = $scope.selectedPiece;
+            $scope.selectedPiece = null;
+            $scope.move.to = $scope.id;
+            $rootScope.$broadcast('movePiece', { 'move': $scope.move });
+          } else {
+            $scope.move = {'from': $scope.id};
+            $scope.selectedPiece = $scope.piece;
+          }
           $scope.$apply(function() {
             $compile($element)($scope);
           })
