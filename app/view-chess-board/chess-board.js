@@ -21,19 +21,31 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
     'BN': '&#9822',
     'BP': '&#9823',
   })
+  $provide.value('STARTING_BOARD', [
+    'WR', 'WN', 'WB', 'WQ', 'WK', 'WB', 'WN', 'WR',
+    'WP', 'WP', 'WP', 'WP', 'WP', 'WP', 'WP', 'WP',
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    'BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP',
+    'BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'
+  ])
 
 }])
 
-.controller('ChessBoardCtrl', ['PIECES',  '$scope', function(PIECES, $scope) {
+.controller('ChessBoardCtrl', ['PIECES', 'STARTING_BOARD',  '$scope', function(PIECES, STARTING_BOARD, $scope) {
 
   $scope.pieces = PIECES;
+  $scope.board = STARTING_BOARD;
+  console.log(STARTING_BOARD);
   $scope.selected_piece = null;
   $scope.move = null;
 
 }])
 
 
-.directive('chessSquare', ['$compile', 'PIECES', '$rootScope', function($compile, PIECES, $rootScope) {
+.directive('chessSquare', ['$compile', '$rootScope', function($compile, $rootScope) {
   return {
     restrict: 'E',
     scope: {
