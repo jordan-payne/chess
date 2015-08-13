@@ -103,7 +103,10 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
         $scope.$on('movePiece', function(event, args) {
           if (args.move.from == $scope.id) {
             $scope.piece = null;
-          }
+            $element.css('-webkit-box-shadow', '');
+            $element.css('-box-shadow', '');
+            $scope.move.from = null;
+          } 
 
         });
 
@@ -113,7 +116,9 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
             $scope.selectedPiece = null;
             $scope.move.to = $scope.id;
             $rootScope.$broadcast('movePiece', { 'move': $scope.move });
-          } else {
+          } else if($scope.piece) {
+            $element.css('-webkit-box-shadow', 'inset 0 0 15px #000');
+            $element.css('-box-shadow', 'inset 0 0 15px #000000');
             $scope.move = {'from': $scope.id};
             $scope.selectedPiece = $scope.piece;
           }
@@ -126,8 +131,10 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
           $element.css('-box-shadow', 'inset 0 0 15px #000000');
         });
         $element.on('mouseleave', function() {
-          $element.css('-webkit-box-shadow', '');
-          $element.css('-box-shadow', '');
+          if ($scope.move == null || $scope.move.from != $scope.id) {
+            $element.css('-webkit-box-shadow', '');
+            $element.css('-box-shadow', '');
+          }
         });
       };
     }
