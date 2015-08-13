@@ -23,17 +23,40 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
 
 .controller('ChessBoardCtrl', ['pieceFactory', 'PIECES', 'PLAYERS', function(pieceFactory, PIECES, PLAYERS) {
 
-  this.white_pawn = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
-  this.white_knight = pieceFactory.fn(PIECES.KNIGHT, PLAYERS.WHITE)
-  this.white_bishop = pieceFactory.fn(PIECES.BISHOP, PLAYERS.WHITE)
-  this.white_rook = pieceFactory.fn(PIECES.ROOK, PLAYERS.WHITE)
+  //TODO: This is just terrible, figure out better way of constructing board, brute force for now.
+  this.white_pawn_one = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+  this.white_pawn_two = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+  this.white_pawn_three = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+  this.white_pawn_four = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+  this.white_pawn_five = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+  this.white_pawn_six = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+  this.white_pawn_seven = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+  this.white_pawn_eight = pieceFactory.fn(PIECES.PAWN, PLAYERS.WHITE)
+
+  this.white_knight_one = pieceFactory.fn(PIECES.KNIGHT, PLAYERS.WHITE)
+  this.white_knight_two = pieceFactory.fn(PIECES.KNIGHT, PLAYERS.WHITE)
+  this.white_bishop_one = pieceFactory.fn(PIECES.BISHOP, PLAYERS.WHITE)
+  this.white_bishop_two = pieceFactory.fn(PIECES.BISHOP, PLAYERS.WHITE)
+  this.white_rook_one = pieceFactory.fn(PIECES.ROOK, PLAYERS.WHITE)
+  this.white_rook_two = pieceFactory.fn(PIECES.ROOK, PLAYERS.WHITE)
   this.white_queen = pieceFactory.fn(PIECES.QUEEN, PLAYERS.WHITE)
   this.white_king = pieceFactory.fn(PIECES.KING, PLAYERS.WHITE)
 
-  this.black_pawn = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
-  this.black_knight = pieceFactory.fn(PIECES.KNIGHT, PLAYERS.BLACK)
-  this.black_bishop = pieceFactory.fn(PIECES.BISHOP, PLAYERS.BLACK)
-  this.black_rook = pieceFactory.fn(PIECES.ROOK, PLAYERS.BLACK)
+  this.black_pawn_one = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+  this.black_pawn_two = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+  this.black_pawn_three = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+  this.black_pawn_four = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+  this.black_pawn_five = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+  this.black_pawn_six = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+  this.black_pawn_seven = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+  this.black_pawn_eight = pieceFactory.fn(PIECES.PAWN, PLAYERS.BLACK)
+
+  this.black_knight_one = pieceFactory.fn(PIECES.KNIGHT, PLAYERS.BLACK)
+  this.black_knight_two = pieceFactory.fn(PIECES.KNIGHT, PLAYERS.BLACK)
+  this.black_bishop_one = pieceFactory.fn(PIECES.BISHOP, PLAYERS.BLACK)
+  this.black_bishop_two = pieceFactory.fn(PIECES.BISHOP, PLAYERS.BLACK)
+  this.black_rook_one = pieceFactory.fn(PIECES.ROOK, PLAYERS.BLACK)
+  this.black_rook_two = pieceFactory.fn(PIECES.ROOK, PLAYERS.BLACK)
   this.black_queen = pieceFactory.fn(PIECES.QUEEN, PLAYERS.BLACK)
   this.black_king = pieceFactory.fn(PIECES.KING, PLAYERS.BLACK)
 
@@ -57,7 +80,7 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
   }
 }])
 
-.directive('chessSquare', ['$compile', function($compile) {
+.directive('chessSquare', ['$compile', 'pieceFactory', 'PIECES', 'PLAYERS', function($compile, pieceFactory, PIECES, PLAYERS) {
   return {
     restrict: 'E',
     scope: {
@@ -68,6 +91,12 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
       $templateElement.replaceWith(this.template);
 
       return function LinkingFunction($scope, $element, $attrs) {
+        $element.on('click', function() {
+          $scope.$apply(function() {
+            console.log($scope.piece);
+            $compile($element)($scope);
+          })
+        });
         $element.on('mouseenter', function() {
           $element.css('-webkit-box-shadow', 'inset 0 0 15px #000');
           $element.css('-box-shadow', 'inset 0 0 15px #000000');
