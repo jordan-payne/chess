@@ -1,52 +1,6 @@
 'use strict';
 
-angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
-
-.config(['$routeProvider', '$provide', function($routeProvider, $provide) {
-  $routeProvider.when('/view-chess-board', {
-    templateUrl: 'view-chess-board/chess-board.html',
-    controller: 'ChessBoardCtrl'
-  });
-  $provide.value('PIECES', {
-    'WK': '&#9812',
-    'WQ': '&#9813',
-    'WR': '&#9814',
-    'WB': '&#9815',
-    'WN': '&#9816',
-    'WP': '&#9817',
-    'BK': '&#9818',
-    'BQ': '&#9819',
-    'BR': '&#9820',
-    'BB': '&#9821',
-    'BN': '&#9822',
-    'BP': '&#9823',
-  })
-  $provide.value('STARTING_BOARD', [
-    'WR', 'WN', 'WB', 'WQ', 'WK', 'WB', 'WN', 'WR',
-    'WP', 'WP', 'WP', 'WP', 'WP', 'WP', 'WP', 'WP',
-    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
-    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
-    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
-    '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ',
-    'BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP',
-    'BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'
-  ])
-
-}])
-
-.controller('ChessBoardCtrl', ['PIECES', 'STARTING_BOARD',  '$scope', function(PIECES, STARTING_BOARD, $scope) {
-
-  $scope.pieces = PIECES;
-  $scope.board = STARTING_BOARD;
-  $scope.selected_piece = null;
-  $scope.move = null;
-  $scope.moves = [];
-  $scope.turn = 0;
-
-}])
-
-
-.directive('chessSquare', ['$compile', '$rootScope', 'rulesSvc', function($compile, $rootScope, rulesSvc) {
+function chessSquare($compile, $rootScope, Rules) {
   return {
     restrict: 'E',
     scope: {
@@ -72,6 +26,7 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
           }
         });
         $scope.$on('illegalMove', function(event, args) {
+          console.log('ILLEGAL MOVE');
           if (args.move.from == $scope.id) {
             $element.css('-webkit-box-shadow', '');
             $element.css('-box-shadow', '');
@@ -91,7 +46,7 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
               $scope.move.to = $scope.id;
               $rootScope.$broadcast('movePiece', { 'move': $scope.move, 'piece': $scope.selectedPiece });
             } else {
-              $rootScope.$broadcast('illegalMove', { 'move': $scope.move });
+              // $rootScope.$broadcast('illegalMove', { 'move': $scope.move });
             }
           } else if($scope.unicode) {
             $element.css('-webkit-box-shadow', 'inset 0 0 15px #000');
@@ -119,4 +74,6 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
       };
     }
   };
-}]);
+}
+
+chess.directive('chessSquare', chessSquare);

@@ -1,14 +1,16 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('chessApp', [
+angular.module('app', [
   'ngRoute',
   'ngResource',
-  'chessApp.chessBoard',
-  'chessApp.about',
-  'chessApp.version',
-  'chessApp.rulesService'
+  'app.chess',
+  'app.rulesService'
 ]).
-config(['$routeProvider', '$provide', function($routeProvider, $provide) {
-  $routeProvider.otherwise({redirectTo: '/view-chess-board'});
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/', {
+    templateUrl: 'chess/chess.html',
+    controller: 'ChessCtrl',
+    controllerAs: 'chess'
+  });
 }]);

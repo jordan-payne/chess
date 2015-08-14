@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('chessApp.rulesService', [])
+angular.module('app.rulesService', [])
 
-.service('rulesSvc', [function() {
+.service('rulesSvc', ['$rootScope', function($rootScope) {
 
   var PIECE_COLOR = {
     'WHITE': 0,
@@ -26,7 +26,7 @@ angular.module('chessApp.rulesService', [])
     if (capturingPieceColor != capturedPieceColor) {
       return true;
     } else {
-      return false;
+      $rootScope.$broadcast('illegalMove', { 'move': move });
     }
   }
 
