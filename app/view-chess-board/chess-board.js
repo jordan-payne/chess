@@ -83,24 +83,28 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
 
 
         $element.on('click', function() {
-          if ($scope.selectedPiece && rulesSvc.isLegal($scope.move, $scope.$parent.turn, $scope.unicode)) {
-            $scope.$parent.turn = 1 - $scope.$parent.turn;
-            $scope.unicode = $scope.selectedPiece;
-            $scope.selectedPiece = null;
-            $scope.move.to = $scope.id;
-            $rootScope.$broadcast('movePiece', { 'move': $scope.move, 'piece': $scope.selectedPiece });
+          if ($scope.selectedPiece) {
+            if (rulesSvc.isLegal($scope.move, $scope.$parent.turn, $scope.unicode)) {
+              $scope.$parent.turn = 1 - $scope.$parent.turn;
+              $scope.unicode = $scope.selectedPiece;
+              $scope.selectedPiece = null;
+              $scope.move.to = $scope.id;
+              $rootScope.$broadcast('movePiece', { 'move': $scope.move, 'piece': $scope.selectedPiece });
+            } else {
+              $rootScope.$broadcast('illegalMove', { 'move': $scope.move });
+            }
           } else if($scope.unicode) {
             $element.css('-webkit-box-shadow', 'inset 0 0 15px #000');
             $element.css('-box-shadow', 'inset 0 0 15px #000000');
             $scope.selectedPiece = $scope.unicode;
             $scope.move = {'from': $scope.id, 'capturingPiece': $scope.selectedPiece};
-          } else {
-            $rootScope.$broadcast('illegalMove', { 'move': $scope.move });
           }
+
           $scope.$apply(function() {
             $compile($element)($scope);
           })
         });
+
         $element.on('mouseenter', function() {
           $element.css('-webkit-box-shadow', 'inset 0 0 15px #000');
           $element.css('-box-shadow', 'inset 0 0 15px #000000');
@@ -111,6 +115,7 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
             $element.css('-box-shadow', '');
           }
         });
+
       };
     }
   };

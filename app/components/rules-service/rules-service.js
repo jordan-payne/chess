@@ -14,12 +14,11 @@ angular.module('chessApp.rulesService', [])
     var capturingPieceColor = pieceColorInterpolator(move.capturingPiece);
 
     if (capturingPieceColor != turn) {
-      console.log('Not your turn.');
       return false;
     }
 
-    if (move.capturedPiece) {
-      var capturedPieceColor = pieceColorInterpolator(move.capturedPiece);
+    if (capturedPiece) {
+      var capturedPieceColor = pieceColorInterpolator(capturedPiece);
     } else {
       return true;
     }
