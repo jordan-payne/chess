@@ -79,6 +79,10 @@
   vertical-align: middle;
 }
 
+#chess div:hover {
+  box-shadow: inset 0 0 15px #000000;
+}
+
 #chess div:nth-child(-2n+8),
 #chess div:nth-child(8) ~ div:nth-child(-2n+15),
 #chess div:nth-child(16) ~ div:nth-child(-2n+24),
