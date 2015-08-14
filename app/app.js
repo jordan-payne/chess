@@ -6,7 +6,8 @@ angular.module('chessApp', [
   'ngResource',
   'chessApp.chessBoard',
   'chessApp.about',
-  'chessApp.version'
+  'chessApp.version',
+  'chessApp.rulesService'
 ]).
 config(['$routeProvider', '$provide', function($routeProvider, $provide) {
   $routeProvider.otherwise({redirectTo: '/view-chess-board'});

@@ -41,11 +41,12 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
   $scope.selected_piece = null;
   $scope.move = null;
   $scope.moves = [];
+  $scope.turn = 0;
 
 }])
 
 
-.directive('chessSquare', ['$compile', '$rootScope', function($compile, $rootScope) {
+.directive('chessSquare', ['$compile', '$rootScope', 'rulesSvc', function($compile, $rootScope, rulesSvc) {
   return {
     restrict: 'E',
     scope: {
@@ -67,12 +68,23 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
             $element.css('-box-shadow', '');
             $scope.$parent.moves.push($scope.move);
             $scope.move = null;
+            $scope.selectedPiece = null;
           }
-
+        });
+        $scope.$on('illegalMove', function(event, args) {
+          if (args.move.from == $scope.id) {
+            $element.css('-webkit-box-shadow', '');
+            $element.css('-box-shadow', '');
+            $scope.move = null;
+            $scope.selectedPiece = null;
+          }
         });
 
+
+
         $element.on('click', function() {
-          if ($scope.selectedPiece) {
+          if ($scope.selectedPiece && rulesSvc.isLegal($scope.move, $scope.$parent.turn, $scope.unicode)) {
+            $scope.$parent.turn = 1 - $scope.$parent.turn;
             $scope.unicode = $scope.selectedPiece;
             $scope.selectedPiece = null;
             $scope.move.to = $scope.id;
@@ -80,8 +92,10 @@ angular.module('chessApp.chessBoard', ['ngRoute', 'ngSanitize'])
           } else if($scope.unicode) {
             $element.css('-webkit-box-shadow', 'inset 0 0 15px #000');
             $element.css('-box-shadow', 'inset 0 0 15px #000000');
-            $scope.move = {'from': $scope.id};
             $scope.selectedPiece = $scope.unicode;
+            $scope.move = {'from': $scope.id, 'capturingPiece': $scope.selectedPiece};
+          } else {
+            $rootScope.$broadcast('illegalMove', { 'move': $scope.move });
           }
           $scope.$apply(function() {
             $compile($element)($scope);
