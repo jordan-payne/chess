@@ -39,7 +39,7 @@ function chessSquare($compile, $rootScope, Rules) {
 
         $element.on('click', function() {
           if ($scope.selectedPiece) {
-            if (rulesSvc.isLegal($scope.move, $scope.$parent.turn, $scope.unicode)) {
+            if (Rules.isLegal($scope.move)) {
               $scope.$parent.turn = 1 - $scope.$parent.turn;
               $scope.unicode = $scope.selectedPiece;
               $scope.selectedPiece = null;

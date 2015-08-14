@@ -4,8 +4,7 @@
 angular.module('app', [
   'ngRoute',
   'ngResource',
-  'app.chess',
-  'app.rulesService'
+  'app.chess'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
