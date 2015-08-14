@@ -1,17 +1,10 @@
 'use strict';
 
-function chessSquare($compile, $rootScope, Rules) {
+function chessSquare($compile, $rootScope, Rules, Board) {
+
   return {
-    restrict: 'E',
-    scope: {
-      id: '@',
-      unicode: '@',
-      selectedPiece: '=',
-      move: '='
-    },
-    template: '<div><span ng-bind-html="unicode"></span></div>',
+    restrict: 'A',
     compile: function CompilingFunction($templateElement, $templateAttributes) {
-      $templateElement.replaceWith(this.template);
 
       return function LinkingFunction($scope, $element, $attrs) {
 
