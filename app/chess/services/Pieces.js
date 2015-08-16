@@ -2,18 +2,19 @@
 
 function Pieces() {
   this.pieces = {
-    'WK': '&#9812',
-    'WQ': '&#9813',
-    'WR': '&#9814',
-    'WB': '&#9815',
-    'WN': '&#9816',
-    'WP': '&#9817',
-    'BK': '&#9818',
-    'BQ': '&#9819',
-    'BR': '&#9820',
-    'BB': '&#9821',
-    'BN': '&#9822',
-    'BP': '&#9823',
+    'WK': {'codePoint': '\u2654'},
+    'WQ': {'codePoint': '\u2655'},
+    'WR': {'codePoint': '\u2656'},
+    'WB': {'codePoint': '\u2657'},
+    'WN': {'codePoint': '\u2658'},
+    'WP': {'codePoint': '\u2659'},
+    'BK': {'codePoint': '\u265A'},
+    'BQ': {'codePoint': '\u265B'},
+    'BR': {'codePoint': '\u265C'},
+    'BB': {'codePoint': '\u265D'},
+    'BN': {'codePoint': '\u265E'},
+    'BP': {'codePoint': '\u265F'},
+    'NO_PIECE': {'codePoint': '\u0020'}
   };
 }
 
