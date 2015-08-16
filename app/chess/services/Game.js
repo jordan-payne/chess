@@ -1,14 +1,33 @@
 'use strict';
 
-function Game(board) {
+function Game() {
 
   this.turn = 0;
   this.currentMove = {};
   this.moves = [];
-  this.board = board;
+  var board = new Board();
 
-  this.getPiece = function(boardSquareId) {
-    return this.board[boardSquareId].piece.codePoint;
+  var getBoard = function(squareId) {
+    return board;
+  }
+
+  var getTurn = function() {
+    return this.turn;
+  }
+
+  var getCurrentMove = function() {
+    return this.currentMove;
+  }
+
+  var getMoveRecord = function() {
+    return this.moves;
+  }
+
+  return {
+    board: getBoard(),
+    turn: getTurn,
+    move: getCurrentMove,
+    moves: getMoveRecord
   }
 
 }
