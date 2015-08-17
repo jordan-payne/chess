@@ -1,40 +1,19 @@
 <div id="horizontal-grid">
-  <div><span>A</span></div>
-  <div><span>B</span></div>
-  <div><span>C</span></div>
-  <div><span>D</span></div>
-  <div><span>E</span></div>
-  <div><span>F</span></div>
-  <div><span>G</span></div>
-  <div><span>H</span></div>
+  <div ng-repeat="l in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']">{{::l}}</div>
 </div>
 <div id="vertical-grid" style="float:left">
-  <div>8</div>
-  <div>7</div>
-  <div>6</div>
-  <div>5</div>
-  <div>4</div>
-  <div>3</div>
-  <div>2</div>
-  <div>1</div>
+  <div ng-repeat="n in [8, 7, 6, 5, 4, 3, 2, 1]">{{::n}}</div>
 </div>
 <div id="chess" style="float: left">
   <chess-square ng-repeat="(coord, square) in chess.board.squares"
-    ng-attr-id={{coord}}
+    ng-attr-id={{::coord}}
     ng-class="{selected: chess.isSelected(coord)}"
     ng-bind="chess.board.square(coord).piece.code"
     select="chess.board.select(id)">
   </chess-square>
 </div>
 <div id="vertical-grid" style="float:left">
-  <div>8</div>
-  <div>7</div>
-  <div>6</div>
-  <div>5</div>
-  <div>4</div>
-  <div>3</div>
-  <div>2</div>
-  <div>1</div>
+  <div ng-repeat="n in [8, 7, 6, 5, 4, 3, 2, 1]">{{::n}}</div>
 </div>
 <div style="float: left">
   Moves:
@@ -43,12 +22,5 @@
   </ul>
 </div>
 <div id="horizontal-grid">
-  <div><span>A</span></div>
-  <div><span>B</span></div>
-  <div><span>C</span></div>
-  <div><span>D</span></div>
-  <div><span>E</span></div>
-  <div><span>F</span></div>
-  <div><span>G</span></div>
-  <div><span>H</span></div>
+  <div ng-repeat="l in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']">{{::l}}</div>
 </div>
