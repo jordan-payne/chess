@@ -4,25 +4,34 @@ function BoardSquare(coordinate, piece) {
 
   var isSelected = false;
   this.coordinate = coordinate;
-  var piece = piece;
-
+  this.piece = piece;
   var getCoordinate = function() {
-    return this.coordinate;
-  }
-
-  var getPiece = function() {
-    return piece;
+    return coordinate;
   }
 
   var isEmpty = function() {
     return getPiece.code != '\u0020';
   }
 
+  var selectSquare = function() {
+    this.isSelected = !this.isSelected;
+    this.switch();
+  }
+
+  var switchPiece = function() {
+    console.log(this);
+    console.log(this.piece);
+    this.piece = new Piece('\u265A');
+    console.log(this.piece);
+  }
+
   return {
     isSelected: isSelected,
     coord: getCoordinate,
-    piece: getPiece(),
-    isEmpty: isEmpty
+    piece: piece,
+    switch: switchPiece,
+    isEmpty: isEmpty,
+    select: selectSquare
   }
 
 }

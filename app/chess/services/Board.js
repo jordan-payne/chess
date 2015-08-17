@@ -2,6 +2,8 @@
 
 function Board(pieces) {
 
+  var selected = [];
+
   var board =
     {
       'a8': new BoardSquare('a8', new Piece('\u2656')),
@@ -82,8 +84,14 @@ function Board(pieces) {
       return board[squareId];
     }
 
+    var selectSquare = function(squareId) {
+      board[squareId].select();
+    }
+
     return {
-      square: getSquare
+      square: getSquare,
+      select: selectSquare,
+      squares: board
     }
 
 }

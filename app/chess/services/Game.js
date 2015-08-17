@@ -7,7 +7,7 @@ function Game() {
   this.moves = [];
   var board = new Board();
 
-  var getBoard = function(squareId) {
+  var getBoard = function() {
     return board;
   }
 
