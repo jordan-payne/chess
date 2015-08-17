@@ -1,7 +1,7 @@
 'use strict';
 
-function ChessCtrl() {
-  return new Game();
+function ChessCtrl($rootScope) {
+  return new Game($rootScope);
 }
 
-chess.controller('ChessCtrl', ChessCtrl);
+chess.controller('ChessCtrl', ['$rootScope', ChessCtrl]);

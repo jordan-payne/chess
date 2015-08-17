@@ -1,11 +1,11 @@
 'use strict';
 
-function Game() {
+function Game($rootScope) {
 
   this.turn = 0;
   this.currentMove = {};
-  this.moves = [];
-  var board = new Board();
+  var msgs = [];
+  var board = new Board($rootScope);
 
   var getBoard = function() {
     return board;
@@ -19,15 +19,15 @@ function Game() {
     return this.currentMove;
   }
 
-  var getMoveRecord = function() {
-    return this.moves;
-  }
+  $rootScope.$on('PIECE CAPTURED', function(msg, args) {
+    msgs.push(args);
+  });
 
   return {
     board: getBoard(),
     turn: getTurn,
     move: getCurrentMove,
-    moves: getMoveRecord
+    msgs: msgs
   }
 
 }

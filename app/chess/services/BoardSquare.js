@@ -5,9 +5,6 @@ function BoardSquare(coordinate, piece) {
   var isSelected = false;
   this.coordinate = coordinate;
   this.piece = piece;
-  var getCoordinate = function() {
-    return coordinate;
-  }
 
   var isEmpty = function() {
     return getPiece.code != '\u0020';
@@ -15,19 +12,16 @@ function BoardSquare(coordinate, piece) {
 
   var selectSquare = function() {
     this.isSelected = !this.isSelected;
-    this.switch();
   }
 
-  var switchPiece = function() {
-    console.log(this);
-    console.log(this.piece);
-    this.piece = new Piece('\u265A');
-    console.log(this.piece);
+  var switchPiece = function(newPiece) {
+    console.log('New Piece:', newPiece);
+    this.piece.code = newPiece.code;
   }
 
   return {
     isSelected: isSelected,
-    coord: getCoordinate,
+    coord: coordinate,
     piece: piece,
     switch: switchPiece,
     isEmpty: isEmpty,

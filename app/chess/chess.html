@@ -7,7 +7,7 @@
 <div id="chess" style="float: left">
   <chess-square ng-repeat="(coord, square) in chess.board.squares"
     ng-attr-id={{::coord}}
-    ng-class="{selected: chess.isSelected(coord)}"
+    ng-class="{selected: chess.board.square(coord).isSelected}"
     ng-bind="chess.board.square(coord).piece.code"
     select="chess.board.select(id)">
   </chess-square>
@@ -16,9 +16,9 @@
   <div ng-repeat="n in [8, 7, 6, 5, 4, 3, 2, 1]">{{::n}}</div>
 </div>
 <div style="float: left">
-  Moves:
-  <ul>
-    <li ng-repeat="move in moves">{{move.from}}{{move.to}}</li>
+  Messages:
+  <ul class="chat">
+    <li ng-repeat="msg in chess.msgs">{{msg}}</li>
   </ul>
 </div>
 <div id="horizontal-grid">

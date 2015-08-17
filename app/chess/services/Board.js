@@ -1,8 +1,8 @@
 'use strict';
 
-function Board(pieces) {
+function Board($rootScope) {
 
-  var selected = [];
+  var move = [];
 
   var board =
     {
@@ -84,18 +84,36 @@ function Board(pieces) {
       return board[squareId];
     }
 
-    var selectSquare = function(squareId) {
+    var selectSquare = function(squareId, currentMove) {
       board[squareId].select();
+      var boardSquare = board[squareId];
+      if (move.length == 1) {
+        move.push(boardSquare)
+        this.capture();
+      } else if (move.length == 0) {
+        move.push(boardSquare)
+      }
+    }
+
+    var capturePiece = function() {
+      $rootScope.$emit('PIECE CAPTURED', 'Piece Captured: ' + board[move[0].coord].piece.code+move[0].coord+ ' ' + board[move[1].coord].piece.code+move[1].coord);
+      board[move[1].coord].piece.code = board[move[0].coord].piece.code;
+      board[move[0].coord].piece.code = '\u0020';
+      board[move[1].coord].select();
+      board[move[0].coord].select();
+      move = [];
     }
 
     return {
       square: getSquare,
       select: selectSquare,
-      squares: board
+      squares: board,
+      move: move,
+      capture: capturePiece
     }
 
 }
 
-chess.factory('Board', function() {
+chess.factory('Board', function($rootScope) {
   return Board;
 })
