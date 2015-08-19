@@ -68,9 +68,8 @@ function game(spec) {
           that.add_message('Capturing blank space.');
           selectedSquare.select();
           capturingSquare.select();
-          var tempPiece = selectedSquare.get_piece();
           selectedSquare.set_piece(capturingSquare.get_piece());
-          capturingSquare.set_piece(tempPiece);
+          capturingSquare.set_piece(piece({'code': '\u0020'}));
           that.set_turn();
           that.set_move(move({}));
           break;
@@ -78,9 +77,8 @@ function game(spec) {
           that.add_message('Capturing an enemy piece.');
           selectedSquare.select();
           capturingSquare.select();
-          var tempPiece = selectedSquare.get_piece();
           selectedSquare.set_piece(capturingSquare.get_piece());
-          capturingSquare.set_piece(tempPiece);
+          capturingSquare.set_piece(piece({'code': '\u0020'}));
           that.set_turn();
           that.set_move(move({}));
       }
