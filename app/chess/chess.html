@@ -7,9 +7,9 @@
 <div id="chess" style="float: left">
   <chess-square ng-repeat="(coord, square) in chess.get_board_squares()"
     ng-attr-id={{::coord}}
-    ng-class="{selected: chess.board.square(coord).isSelected}"
+    ng-class="{selected: chess.is_selected(coord)}"
     ng-bind="chess.get_code(coord)"
-    select="chess.board.select(id)">
+    select="chess.select_square(id)">
   </chess-square>
 </div>
 <div id="vertical-grid" style="float:left">
@@ -18,7 +18,7 @@
 <div style="float: left">
   Messages:
   <ul class="chat">
-    <li ng-repeat="msg in chess.msgs">{{msg}}</li>
+    <li ng-repeat="msg in chess.get_messages() track by $index">{{msg}}</li>
   </ul>
 </div>
 <div id="horizontal-grid">

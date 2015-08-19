@@ -85,7 +85,7 @@ function board(spec) {
     }
 
     that.select_square = function(squareId) {
-      that.get_square[squareId].select();
+      that.get_square(squareId).select();
     }
 
     that.get_board_squares = function() {
