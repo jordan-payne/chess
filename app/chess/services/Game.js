@@ -1,37 +1,41 @@
 'use strict';
 
-function Game($rootScope) {
+function game(spec) {
 
-  this.turn = 0;
-  this.currentMove = {};
-  var msgs = [];
-  var board = new Board($rootScope);
+  var that = {};
 
-  var getBoard = function() {
-    return board;
+  that.get_turn = function() {
+    return spec.turn;
   }
 
-  var getTurn = function() {
-    return this.turn;
+  that.get_board = function() {
+    return spec.board;
   }
 
-  var getCurrentMove = function() {
-    return this.currentMove;
+  that.get_move = function() {
+    return spec.move;
   }
 
-  $rootScope.$on('PIECE CAPTURED', function(msg, args) {
-    msgs.push(args);
-  });
-
-  return {
-    board: getBoard(),
-    turn: getTurn,
-    move: getCurrentMove,
-    msgs: msgs
+  that.get_messages = function() {
+    return spec.messages;
   }
+
+  that.select_square = function(squareId) {
+    that.get_board().select_square(squareId);
+  }
+
+  that.get_code = function(squareId) {
+    return that.get_board().get_square(squareId).get_piece().get_code();
+  }
+
+  that.get_board_squares = function() {
+    return that.get_board().get_board_squares();
+  }
+
+  return that;
 
 }
 
-chess.factory('Game', function() {
-    return Game;
+chess.factory('game', function(spec) {
+    return game;
 })

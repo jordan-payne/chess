@@ -1,35 +1,33 @@
 'use strict';
 
-function BoardSquare(coordinate, piece) {
+function square(spec) {
 
-  var isSelected = false;
-  this.coordinate = coordinate;
-  this.piece = piece;
+  var that = {};
 
-  var isEmpty = function() {
-    return getPiece.code != '\u0020';
+  that.is_selected = function() {
+    return spec.isSelected;
   }
 
-  var selectSquare = function() {
-    this.isSelected = !this.isSelected;
+  that.select = function() {
+    spec.isSelected = !spec.isSelected;
   }
 
-  var switchPiece = function(newPiece) {
-    console.log('New Piece:', newPiece);
-    this.piece.code = newPiece.code;
+  that.get_piece = function() {
+    return spec.piece;
   }
 
-  return {
-    isSelected: isSelected,
-    coord: coordinate,
-    piece: piece,
-    switch: switchPiece,
-    isEmpty: isEmpty,
-    select: selectSquare
+  that.set_piece = function(piece) {
+    spec.piece = piece;
   }
+
+  that.get_coordinate = function() {
+    return spec.coordinate;
+  }
+
+  return that;
 
 }
 
-chess.factory('BoardSquare', function() {
-  return BoardSquare;
+chess.factory('square', function(spec) {
+  return square;
 })

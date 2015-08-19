@@ -1,19 +1,47 @@
 'use strict';
 
-function Piece(codePoint) {
+function piece(spec) {
 
-  var codePoint = codePoint;
+  var that = {};
 
-  var getCodePoint = function() {
-    return codePoint;
+  switch(spec.code) {
+    case '\u0020':
+      spec.color = 'NEUTRAL';
+      break;
+    case '\u2654':
+      spec.color = 'WHITE';
+      break;
+    case '\u2655':
+      spec.color = 'WHITE';
+      break;
+    case '\u2656':
+      spec.color = 'WHITE';
+      break;
+    case '\u2657':
+      spec.color = 'WHITE';
+      break;
+    case '\u2658':
+      spec.color = 'WHITE';
+      break;
+    case '\u2659':
+      spec.color = 'WHITE';
+      break;
+    default:
+      spec.color = 'BLACK';
   }
 
-  return {
-    code: getCodePoint()
-  };
+  that.get_code = function() {
+    return spec.code;
+  }
+
+  that.get_color = function() {
+    return spec.color;
+  }
+
+  return that;
 
 }
 
-chess.factory('Piece', function() {
-  return Piece;
+chess.factory('piece', function() {
+  return piece;
 })

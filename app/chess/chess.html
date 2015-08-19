@@ -5,10 +5,10 @@
   <div ng-repeat="n in [8, 7, 6, 5, 4, 3, 2, 1]">{{::n}}</div>
 </div>
 <div id="chess" style="float: left">
-  <chess-square ng-repeat="(coord, square) in chess.board.squares"
+  <chess-square ng-repeat="(coord, square) in chess.get_board_squares()"
     ng-attr-id={{::coord}}
     ng-class="{selected: chess.board.square(coord).isSelected}"
-    ng-bind="chess.board.square(coord).piece.code"
+    ng-bind="chess.get_code(coord)"
     select="chess.board.select(id)">
   </chess-square>
 </div>
