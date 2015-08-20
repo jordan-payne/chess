@@ -29,7 +29,7 @@ function game(spec) {
   }
 
   that.add_message = function(msg) {
-    spec.messages.push(msg);
+    spec.messages.$add({text: msg});
   }
 
   that.select_square = function(squareId) {

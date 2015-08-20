@@ -18,7 +18,7 @@
 <div style="float: left">
   Messages:
   <ul class="chat">
-    <li ng-repeat="msg in chess.get_messages() track by $index">{{msg}}</li>
+    <li ng-repeat="msg in chess.get_messages() track by $index">{{msg.text}}</li>
   </ul>
 </div>
 <div id="horizontal-grid">

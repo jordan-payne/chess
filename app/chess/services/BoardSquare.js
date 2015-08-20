@@ -4,6 +4,8 @@ function square(spec) {
 
   var that = {};
 
+  spec.isSelected = false;
+
   that.is_selected = function() {
     return spec.isSelected;
   }
