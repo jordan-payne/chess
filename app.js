@@ -8,7 +8,7 @@ mailer.extent(app, {
   from: 'strandx@gmail.com',
   host: 'smtp.gmail.com',
   secureConnection: true,
-  port: 465
+  port: 465,
   transportMethod: 'SMTP',
   auth: {
     user: 'strandx@gmail.com',
