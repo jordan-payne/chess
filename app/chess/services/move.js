@@ -31,68 +31,47 @@ function Move() {
         color = 'BLACK';
     }
 
-    s.move.capturingColor = color;
-    switch(s.move.capturingColor) {
-      case s.turn.$value:
-        console.log('It is your turn!');
-        s.move.capturingPiece = s.board[id].piece;
-        s.messages.$add({'text': 'You have selected one of your pieces'});
+    if (typeof s.move.capturingSquare == 'undefined') {
+      s.move.capturingColor = color;
+      switch(s.move.capturingColor) {
+        case s.turn.$value:
+          s.move.capturingPiece = s.board[id].piece;
+          s.move.capturingSquare = id;
+          s.messages.$add({'text': 'You have selected one of your pieces.'});
+          break;
+        default:
+          s.messages.$add({'text': 'You must select one of your own pieces.'});
+          s.board[id].isSelected = false;
+          break;
+      }
+    } else {
+      switch(color) {
+        case s.turn.$value:
+          s.messages.$add({'text': 'You cannot capture your own piece.'});
+          s.board[s.move.capturingSquare].isSelected = false;
+          s.board[id].isSelected = false;
+          s.move = {};
+          break;
+        case 'NEUTRAL':
+          s.messages.$add({'text': s.move.capturingPiece+s.move.capturingSquare+id});
+          s.board[s.move.capturingSquare].isSelected = false;
+          s.board[id].isSelected = false;
+          s.board[id].piece = s.move.capturingPiece;
+          s.board[s.move.capturingSquare].piece = '\u0020';
+          s.turn.$value = s.turn.$value.localeCompare('BLACK') == 0 ? 'WHITE' : 'BLACK';
+          s.move = {};
+          break;
+        default:
+          s.messages.$add({'text': s.move.capturingPiece+s.move.capturingSquare+id+s.board[id].piece});
+          s.board[s.move.capturingSquare].isSelected = false;
+          s.board[id].isSelected = false;
+          s.board[id].piece = s.move.capturingPiece;
+          s.board[s.move.capturingSquare].piece = '\u0020';
+          s.turn.$value = s.turn.$value.localeCompare('BLACK') == 0 ? 'WHITE' : 'BLACK';
+          s.move = {};
+      }
     }
-
-    // var capturingColor = that.get_board().get_square(squareId).get_piece().get_color();
-    // var capturingSquare = that.get_move().get_capturing_square();
-    // var selectedSquare = that.get_board().get_square(squareId);
-    //
-    // if (typeof capturingSquare == 'undefined') {
-    //
-    //   switch(capturingColor) {
-    //     case that.get_turn():
-    //       that.get_move().set_capturing_square(that.get_board().get_square(squareId));
-    //       that.add_message('You have selected one of your pieces.');
-    //       break;
-    //     case 'NEUTRAL':
-    //       that.add_message('You must select one of your own pieces.');
-    //       selectedSquare.select();
-    //       break;
-    //     default:
-    //       that.add_message('It is not your turn.');
-    //       selectedSquare.select();
-    //       break;
-    //   }
-    // } else {
-    //
-    //   switch(capturingColor) {
-    //     case that.get_turn():
-    //       that.add_message('You cannot capture your own piece.');
-    //       selectedSquare.select();
-    //       capturingSquare.select();
-    //       break;
-    //     case 'NEUTRAL':
-    //       that.add_message('Capturing blank space.');
-    //       selectedSquare.select();
-    //       capturingSquare.select();
-    //       selectedSquare.set_piece(capturingSquare.get_piece());
-    //       capturingSquare.set_piece(piece({'code': '\u0020'}));
-    //       that.set_turn();
-    //       that.set_move(move({}));
-    //       break;
-    //     default:
-    //       that.add_message('Capturing an enemy piece.');
-    //       selectedSquare.select();
-    //       capturingSquare.select();
-    //       selectedSquare.set_piece(capturingSquare.get_piece());
-    //       capturingSquare.set_piece(piece({'code': '\u0020'}));
-    //       that.set_turn();
-    //       that.set_move(move({}));
-    //   }
-    //
-    // }
-
   }
-
-
-
-
 }
 
 
