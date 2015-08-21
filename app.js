@@ -4,7 +4,7 @@ var app = express();
 app.use(express.static(__dirname + '/app'));
 app.listen(process.env.PORT || 3000);
 
-mailer.extent(app, {
+mailer.extend(app, {
   from: 'strandx@gmail.com',
   host: 'smtp.gmail.com',
   secureConnection: true,
