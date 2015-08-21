@@ -20,14 +20,13 @@ app.get('/send', function(req, res) {
   });
 });
 
-console.log(process.env.MAILGUN_API_KEY);
-
 var smtpTransport = nodemailer.createTransport("SMTP", {
-  service: "Mailgun",
   auth: {
-    user: "strandx@gmail.com",
-    pass: "llap6GGL@22"
-  }
+    user: process.env.MAILGUN_SMTP_LOGIN,
+    pass: process.env.MAILGUN_SMTP_PASSWORD
+  },
+  port: process.env.MAILGUN_SMTP_PORT,
+  host: process.env.MAILGUN_SMTP_SERVER
 });
 
 app.listen(process.env.PORT || 3000);
