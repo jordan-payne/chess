@@ -37,10 +37,10 @@ function Move() {
         case s.turn.$value:
           s.move.capturingPiece = s.board[id].piece;
           s.move.capturingSquare = id;
-          s.messages.$add({'text': 'You have selected one of your pieces.'});
+          s.messages.$add({'text': 'Select: ' + s.move.capturingPiece});
           break;
         default:
-          s.messages.$add({'text': 'You must select one of your own pieces.'});
+          s.messages.$add({'text': 'Illegal: Not your turn.'});
           s.board[id].isSelected = false;
           break;
       }

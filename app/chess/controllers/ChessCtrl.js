@@ -1,16 +1,17 @@
 'use strict';
 
-function ChessCtrl($firebaseArray, $firebaseObject, $scope, moveService) {
+function ChessCtrl($firebaseArray, $firebaseObject, $scope, moveService, $routeParams) {
 
-  var id = 1//Math.round(Math.random() * 100000000);
-  var gameRef = new Firebase('https://chess-project.firebaseio.com/game/'+id);
+  var gameId = $routeParams.gameId || Math.round(Math.random() * 100000000);
+
+  var gameRef = new Firebase('https://chess-project.firebaseio.com/game/'+gameId);
   var msgRef = gameRef.child('messages');
   var turnRef = gameRef.child('turn');
   var moveRef = gameRef.child('move');
 
   var chess = {
     'turn': $firebaseObject(turnRef),
-    'board': board($firebaseObject, id),
+    'board': board($firebaseObject, gameId),
     'messages': $firebaseArray(msgRef),
     'move': $firebaseObject(moveRef)
   }

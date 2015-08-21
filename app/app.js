@@ -7,7 +7,7 @@ angular.module('app', [
   'app.chess'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {
+  $routeProvider.when('/:gameId?', {
     templateUrl: 'chess/chess.html',
     controller: 'ChessCtrl',
     controllerAs: 'chess'
