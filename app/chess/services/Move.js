@@ -1,7 +1,7 @@
 'use strict';
 
 function Move() {
-
+  //yup
   this.move = function(s, id) {
     s.board[id].isSelected = !s.board[id].isSelected;
     var color;
