@@ -21,12 +21,12 @@ app.get('/send', function(req, res) {
 });
 
 var smtpTransport = nodemailer.createTransport("SMTP", {
+  service: 'Mailgun',
   auth: {
     user: process.env.MAILGUN_SMTP_LOGIN,
     pass: process.env.MAILGUN_SMTP_PASSWORD
   },
-  port: process.env.MAILGUN_SMTP_PORT,
-  host: process.env.MAILGUN_SMTP_SERVER
+  name: 'angular-chess.herokuapp.com'
 });
 
 app.listen(process.env.PORT || 3000);
