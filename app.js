@@ -4,6 +4,7 @@ var app = express();
 app.use(express.static(__dirname + '/app'));
 
 app.get('/send', function(req, res) {
+  console.log(req);
   var mailOptions = {
     to: 'payne.jc@me.com',
     subject: 'Hello World!',

@@ -122,3 +122,8 @@
 #chess div:nth-child(56) ~ div:nth-child(-2n+63) {
     background-color: #ddd;
 }
+
+#email-invite {
+  margin-left: 20%;
+  width: 50%;
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-function ChessCtrl($firebaseArray, $firebaseObject, $scope, moveService, $routeParams) {
+function ChessCtrl($http, $firebaseArray, $firebaseObject, $scope, moveService, $routeParams) {
 
   var gameId = $routeParams.gameId || Math.round(Math.random() * 100000000);
 
@@ -25,6 +25,15 @@ function ChessCtrl($firebaseArray, $firebaseObject, $scope, moveService, $routeP
   });
   chess.board.$bindTo($scope, 'board');
   chess.move.$bindTo($scope, 'move');
+
+  $scope.submit = function() {
+    $http.get('/send', {params: { game_id: gameId, email: $scope.email }})
+      .then(function(response) {
+        $scope.inviteStatus = 'Invite Sent!'
+      }, function(response) {
+        $scope.inviteStatus = 'Something went wrong, try again!'
+      });
+  }
 
   $scope.select = function(id) {
     moveService.move($scope, id);
