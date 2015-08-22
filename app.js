@@ -4,7 +4,7 @@ var app = express();
 app.use(express.static(__dirname + '/app'));
 
 app.get('/send', function(req, res) {
-  console.log(req);
+  console.log(req.query.game_id);
   var mailOptions = {
     from: 'no-reply@angular-chess.herokuapp.com',
     to: req.query.email,
@@ -13,9 +13,9 @@ app.get('/send', function(req, res) {
       ' Follow this link: https://angular-chess.herokuapp.com/#/' +
       req.query.game_id,
     html: 'Someone wants you to join them in a game of chess! ' +
-      ' Follow this <a href="https://angular-chess.herokuapp.com/#/"' +
+      ' Follow this <a href="https://angular-chess.herokuapp.com/#/' +
       req.query.game_id +
-      '>link</a>!'
+      '">link</a>!'
   };
   smtpTransport.sendMail(mailOptions, function(error, response) {
     if (error) {
