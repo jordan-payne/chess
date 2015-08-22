@@ -6,9 +6,16 @@ app.use(express.static(__dirname + '/app'));
 app.get('/send', function(req, res) {
   console.log(req);
   var mailOptions = {
-    to: 'payne.jc@me.com',
-    subject: 'Hello World!',
-    text: 'This is the body of the email'
+    from: 'no-reply@angular-chess.herokuapp.com',
+    to: req.query.email,
+    subject: 'Someone has invited you to play chess!',
+    text: 'Someone wants you to join them in a game of chess!' +
+      ' Follow this link: https://angular-chess.herokuapp.com/#/' +
+      req.query.game_id,
+    html: 'Someone wants you to join them in a game of chess! ' +
+      ' Follow this <a href="https://angular-chess.herokuapp.com/#/"' +
+      req.query.game_id +
+      '>link</a>!'
   };
   smtpTransport.sendMail(mailOptions, function(error, response) {
     if (error) {
