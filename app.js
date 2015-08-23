@@ -3,6 +3,8 @@ var nodemailer = require('nodemailer');
 var app = express();
 app.use(express.static(__dirname + '/app'));
 
+var port = process.env.PORT || 8080;
+
 app.get('/send', function(req, res) {
   console.log(req.query.game_id);
   var mailOptions = {
@@ -37,4 +39,5 @@ var smtpTransport = nodemailer.createTransport("SMTP", {
   name: 'angular-chess.herokuapp.com'
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(port);
+console.log('Starting server using port ' + port);

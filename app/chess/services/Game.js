@@ -6,31 +6,31 @@ function game(spec) {
 
   that.get_turn = function() {
     return spec.turn;
-  }
+  };
 
   that.set_turn = function(t) {
     spec.turn = that.get_turn().localeCompare('BLACK') == 0 ? 'WHITE' : 'BLACK';
-  }
+  };
 
   that.get_board = function() {
     return spec.board;
-  }
+  };
 
   that.get_move = function() {
     return spec.move;
-  }
+  };
 
   that.set_move = function(m) {
     spec.move = m;
-  }
+  };
 
   that.get_messages = function() {
     return spec.messages;
-  }
+  };
 
   that.add_message = function(msg) {
     spec.messages.$add({text: msg});
-  }
+  };
 
   that.select_square = function(squareId) {
 
@@ -84,19 +84,19 @@ function game(spec) {
       }
 
     }
-  }
+  };
 
   that.get_code = function(squareId) {
     return that.get_board().get_square(squareId).get_piece().get_code();
-  }
+  };
 
   that.get_board_squares = function() {
     return that.get_board().get_board_squares();
-  }
+  };
 
   that.is_selected = function(squareId) {
     return that.get_board().get_square(squareId).is_selected();
-  }
+  };
 
   return that;
 

@@ -14,12 +14,12 @@ function ChessCtrl($http, $firebaseArray, $firebaseObject, $scope, moveService, 
     'board': board($firebaseObject, gameId),
     'messages': $firebaseArray(msgRef),
     'move': $firebaseObject(moveRef)
-  }
+  };
 
   $scope.messages = chess.messages;
 
   chess.turn.$bindTo($scope, 'turn').then(function() {
-    if ($scope.turn.$value == null) {
+    if ($scope.turn.$value === null) {
       $scope.turn.$value = 'WHITE';
     }
   });
@@ -29,15 +29,15 @@ function ChessCtrl($http, $firebaseArray, $firebaseObject, $scope, moveService, 
   $scope.submit = function() {
     $http.get('/send', {params: { game_id: gameId, email: $scope.email }})
       .then(function(response) {
-        $scope.inviteStatus = 'Invite Sent!'
+        $scope.inviteStatus = 'Invite Sent!';
       }, function(response) {
-        $scope.inviteStatus = 'Something went wrong, try again!'
+        $scope.inviteStatus = 'Something went wrong, try again!';
       });
-  }
+  };
 
   $scope.select = function(id) {
     moveService.move($scope, id);
-  }
+  };
   // Terrible to do for now to ensure the board is presented properly due
   // to firebase re-ordering object keys.
   $scope.boardOrder = [
@@ -105,7 +105,7 @@ function ChessCtrl($http, $firebaseArray, $firebaseObject, $scope, moveService, 
     'f1',
     'g1',
     'h1'
-  ]
+  ];
 
 }
 

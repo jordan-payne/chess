@@ -1,6 +1,6 @@
 'use strict';
 
-function board($firebaseObject, id) {
+var board = function Board($firebaseObject, id) {
 
   var newBoard =  {
       'a8': {'isSelected': false, 'piece': '\u2656'},
@@ -71,7 +71,7 @@ function board($firebaseObject, id) {
 
   var ref = new Firebase('https://chess-project.firebaseio.com/game/' + id);
   var boardRef = ref.child('board');
-  
+
   var obj = $firebaseObject(boardRef);
   obj.$loaded()
     .then(function(x) {
