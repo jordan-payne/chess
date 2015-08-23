@@ -1,7 +1,7 @@
 var express = require('express');
 var nodemailer = require('nodemailer');
 var app = express();
-app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/dist.dev'));
 
 var port = process.env.PORT || 8080;
 
