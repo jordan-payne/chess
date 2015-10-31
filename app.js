@@ -6,17 +6,21 @@ app.use(express.static(__dirname + '/dist.dev'));
 var port = process.env.PORT || 8080;
 
 app.get('/send', function(req, res) {
-  console.log(req.query.game_id);
+
+  var emailAddressToSendTo = req.query.email;
+  var gameId = req.query.game_id;
+
+  console.log('Inviting ' + emailAddressToSendTo + ' to join game with id: ' + gameId);
   var mailOptions = {
     from: 'no-reply@angular-chess.herokuapp.com',
-    to: req.query.email,
+    to: emailAddressToSendTo,
     subject: 'Someone has invited you to play chess!',
     text: 'Someone wants you to join them in a game of chess!' +
       ' Follow this link: https://angular-chess.herokuapp.com/#/' +
-      req.query.game_id,
+      gameId,
     html: 'Someone wants you to join them in a game of chess! ' +
       ' Follow this <a href="https://angular-chess.herokuapp.com/#/' +
-      req.query.game_id +
+      gameId +
       '">link</a>!'
   };
   smtpTransport.sendMail(mailOptions, function(error, response) {

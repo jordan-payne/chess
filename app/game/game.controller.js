@@ -1,6 +1,10 @@
 'use strict';
 
-function ChessCtrl($http, $firebaseArray, $firebaseObject, $scope, moveService, $routeParams) {
+angular
+  .module('game')
+  .controller('GameController', GameController);
+
+function GameController($http, $firebaseArray, $firebaseObject, $scope, moveService, boardService, $routeParams) {
 
   var gameId = $routeParams.gameId || Math.round(Math.random() * 100000000);
 
@@ -11,7 +15,7 @@ function ChessCtrl($http, $firebaseArray, $firebaseObject, $scope, moveService, 
 
   var chess = {
     'turn': $firebaseObject(turnRef),
-    'board': board($firebaseObject, gameId),
+    'board': boardService.board($firebaseObject, gameId),
     'messages': $firebaseArray(msgRef),
     'move': $firebaseObject(moveRef)
   };
@@ -108,5 +112,3 @@ function ChessCtrl($http, $firebaseArray, $firebaseObject, $scope, moveService, 
   ];
 
 }
-
-chess.controller('ChessCtrl', ChessCtrl);

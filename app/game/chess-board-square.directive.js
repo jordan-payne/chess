@@ -1,5 +1,9 @@
 'use strict';
 
+angular
+  .module('game')
+  .directive('chessSquare', chessSquare);
+
 function chessSquare($compile) {
   return {
     transclude: true,
@@ -9,8 +13,6 @@ function chessSquare($compile) {
       'select': '&',
       'id': '@'
     },
-    templateUrl: 'chess/directives/chessSquare.html'
+    templateUrl: 'game/chess-board-square.directive.html'
   };
 }
-
-chess.directive('chessSquare', chessSquare);

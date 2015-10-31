@@ -58,4 +58,4 @@ gulp.task('clean-dev', function() {
   return deferred.promise;
 });
 
-gulp.task('build-app-dev', ['clean-dev'], pipes.builtAppDev);
+gulp.task('build', ['clean-dev'], pipes.builtAppDev);
