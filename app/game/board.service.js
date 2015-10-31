@@ -4,7 +4,7 @@ angular
   .module('game')
   .factory('boardService', boardService);
 
-function boardService() {
+function boardService(Firebase) {
 
   return {
     board: function($firebaseObject, id) {
@@ -91,5 +91,5 @@ function boardService() {
 
       return obj;
     }
-  }
+  };
 }

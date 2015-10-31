@@ -4,7 +4,7 @@ angular
   .module('game')
   .controller('GameController', GameController);
 
-function GameController($http, $firebaseArray, $firebaseObject, $scope, moveService, boardService, $routeParams) {
+function GameController($http, $firebaseArray, $firebaseObject, $scope, moveService, boardService, $routeParams, Firebase) {
 
   var gameId = $routeParams.gameId || Math.round(Math.random() * 100000000);
 

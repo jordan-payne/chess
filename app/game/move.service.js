@@ -63,7 +63,7 @@ function moveService() {
             s.board[id].isSelected = false;
             s.board[id].piece = s.move.capturingPiece;
             s.board[s.move.capturingSquare].piece = '\u0020';
-            s.turn.$value = s.turn.$value.localeCompare('BLACK') == 0 ? 'WHITE' : 'BLACK';
+            s.turn.$value = s.turn.$value.localeCompare('BLACK') === 0 ? 'WHITE' : 'BLACK';
             s.move = {};
             break;
           default:
@@ -72,10 +72,10 @@ function moveService() {
             s.board[id].isSelected = false;
             s.board[id].piece = s.move.capturingPiece;
             s.board[s.move.capturingSquare].piece = '\u0020';
-            s.turn.$value = s.turn.$value.localeCompare('BLACK') == 0 ? 'WHITE' : 'BLACK';
+            s.turn.$value = s.turn.$value.localeCompare('BLACK') === 0 ? 'WHITE' : 'BLACK';
             s.move = {};
         }
       }
     }
-  }
+  };
 }
