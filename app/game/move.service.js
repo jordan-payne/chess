@@ -6,6 +6,63 @@ angular
 
 function moveService() {
 
+  var listBishopMoves = function(position) {
+
+    var positionObj = generateBoardPositionObject(position);
+
+    var validMoves = [];
+
+    var i = positionObj.column;
+    var j = positionObj.row;
+    while(i < 8 && j > 1) {
+      i = i + 1;
+      j = j - 1;
+      validMoves.push(generateKeyFromBoardPositionObject({column: i, row: j}));
+    }
+
+    i = positionObj.column;
+    j = positionObj.row;
+    while(i > 1 && j > 1) {
+      i = i - 1;
+      j = j - 1;
+      validMoves.push(generateKeyFromBoardPositionObject({column: i, row: j}));
+    }
+
+    i = positionObj.column;
+    j = positionObj.row;
+    while(i < 8 && j < 8) {
+      i = i + 1;
+      j = j + 1;
+      validMoves.push(generateKeyFromBoardPositionObject({column: i, row: j}));
+    }
+
+    i = positionObj.column;
+    j = positionObj.row;
+    while(i > 1 && j < 8) {
+      i = i - 1;
+      j = j + 1;
+      validMoves.push(generateKeyFromBoardPositionObject({column: i, row: j}));
+    }
+
+    return validMoves;
+
+  };
+
+  var generateBoardPositionObject = function(position) {
+    var column = position.substring(0,1).charCodeAt(0) - 96;
+    var row = parseInt(position.substring(1,2));
+    return {column: column, row: row}
+  };
+
+  var generateKeyFromBoardPositionObject = function(positionObj) {
+    var letter = positionObj.column + 96;
+    letter = String.fromCharCode(letter);
+
+    var number = String.fromCharCode(48 + positionObj.row);
+    var key = letter + number;
+    return key;
+  };
+
   return {
     move: function(s, id) {
       s.board[id].isSelected = !s.board[id].isSelected;
@@ -34,6 +91,11 @@ function moveService() {
           break;
         default:
           color = 'BLACK';
+      }
+
+      if (s.board[id].type === 3) {
+        s.messages.$add({'text': 'White Bishop selected.'})
+        console.log(listBishopMoves(id, s.board));
       }
 
       if (typeof s.move.capturingSquare == 'undefined') {
@@ -78,4 +140,5 @@ function moveService() {
       }
     }
   };
+
 }
